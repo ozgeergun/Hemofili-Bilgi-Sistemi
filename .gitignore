@@ -1,101 +1,50 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+print("**********************")
+print("HEMOFİLİ BİLGİ SİSTEMİ")
+print("**********************")
+devam = input("DEVAM ETMEK İÇİN 'E/e' YAZINIZ..")
+while devam=="E"or "e":
+    tc_no=int(input("tc kimlik no giriniz.."))
+    ad_soyad=input("ad soyad giriniz..")
+    hastalik_tipi=input("hastalığınızın tipini 'A,a,B,b' olarak belirtiniz..")
+    faktor_miktarı=float(input("hastalığa dair kandaki faktör miktarını belirtiniz.."))
+    if 0<=faktor_miktarı<1:
+        hastalik_siddeti="ağır"
+    elif 1<=faktor_miktarı<5:
+        hastalik_siddeti="orta"
+    elif 5<=faktor_miktarı<50:
+        hastalik_siddeti="hafif"
+    antikor_miktari=float(input("kandaki ilgili proteine karşı üretilen antikor miktarını belirtiniz.."))
+    while antikor_miktari<0:
+        antikor_miktari = float(input("kandaki ilgili proteine karşı üretilen antikor miktarını belirtiniz.."))
+        if antikor_miktari>5:
+            inhibitor="+"
+    if hastalik_siddeti=="orta":
+        yillik_kanama=int(input("hastanın yıllık kanama miktarını belirtiniz.."))
+        while yillik_kanama<0:
+            yillik_kanama = int(input("hastanın yıllık kanama miktarını belirtiniz.."))
+    if hastalik_siddeti=="ağır":
+        profilaksi="+"
+    elif hastalik_siddeti=="orta":
+        if yillik_kanama/12>3:
+            profilaksi="+"
+    if (hastalik_siddeti=="ağır") or (hastalik_siddeti=="orta"and yillik_kanama/12>3):
+        kg=float(input("hastanın kilosunu belirtiniz.."))
+        while kg<0:
+            kg = float(input("hastanın kilosunu belirtiniz.."))
+        verilecek_faktor=(40-faktor_miktarı)/2*kg
+        print(ad_soyad, "isimli", tc_no,
+              "tc kimlik nolu hastanın hastalığıyla alakalı bilgiler aşağıda listelenmiştir..")
+        faktor_ilaci=input("hastanın kullanacağı faktör ilacı türünü 'P,p,R,r' olarak belirtiniz")
+        if faktor_ilaci=="P" or "p":
+            ucret=1.25*verilecek_faktor
+        if faktor_ilaci== "R" or "r":
+            ucret=1.5*verilecek_faktor
 
-# C extensions
-*.so
+        print(hastalik_tipi, hastalik_siddeti,verilecek_faktor)
 
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+    else:
+        print(ad_soyad, "isimli", tc_no,
+              "tc kimlik nolu hastanın hastalığıyla alakalı bilgiler aşağıda listelenmiştir..")
+        print(hastalik_tipi, hastalik_siddeti)
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
-
-# dotenv
-.env
-
-# virtualenv
-.venv
-venv/
-ENV/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
+    devam = input("DEVAM ETMEK İÇİN 'E/e' YAZINIZ..")
